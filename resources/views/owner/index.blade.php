@@ -30,7 +30,7 @@
                           <div class="flex justify-end mb-8"></div>
                           @elseif (empty($user))
                           <div class="flex justify-end mb-8">
-                            <button onclick="location.href='{{ route('user.seminars.edit02', ['id' => $seminar->id]) }}'" class="flex text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">講義を作成する</button>
+                            <button onclick="location.href='{{ route('owner.seminars.create', ['id' => $seminar->id]) }}'" class="flex text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">講義を作成する</button>
                           </div>
                           @endif
                         </div>

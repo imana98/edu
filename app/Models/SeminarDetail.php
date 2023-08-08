@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Seminar;
 use App\Models\Entry;
 use App\Models\Record;
+use App\Models\Owner;
 
 class SeminarDetail extends Model
 {
@@ -31,5 +32,10 @@ class SeminarDetail extends Model
 
     public function record() {
         return $this->hasOne(Record::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
     }
 }

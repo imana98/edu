@@ -86,47 +86,4 @@ class SeminarController extends Controller
         return redirect()->route('user.seminars.show', ['id' => $id])->with(compact('speaker_id'));
     }
 
-
-    public function edit01()
-    {
-        $dt = Carbon::now();
-        $dd = $dt->format('Y/m/d H:i:s');
-        $id = 4;
-        $speaker = Speaker::findOrFail(Auth::id());
-        $seminar = Seminar::findOrFail($id);
-        $seminars = Seminar::orderBy('date', 'desc')->paginate(3);
-        $detail = SeminarDetail::where('seminar_id', $id)->where('speaker_id', Auth::id())->first();
-        $entries = Entry::where('detail_id', $detail->id)->get();
-        $teachers = DB::table('users')->where('id', '!=', Auth::id())->get();
-        return view('speaker.index', compact('speaker', 'seminar', 'seminars',  'dd', 'detail', 'teachers', 'entries'));
-    }
-
-    public function edit02()
-    {
-        $id = 4;
-
-        $seminar = Seminar::findOrFail($id);
-        $speaker = Speaker::findOrFail(Auth::id());
-
-        return view('speaker.create', compact('seminar', 'speaker'));
-    }
-
-    public function edit03(Request $request, $id)
-    {
-        dd($request);
-        $seminar = new SeminarDetail();
-        $seminar->seminar_id = $id;
-        $seminar->speaker_id = Auth::id();
-        $seminar->speaker_name = $request->name;
-        $seminar->title = $request->title;
-        $seminar->descriptions = $request->message;
-
-        return redirect()->route('user.seminars.edit01');
-    }
-
-    public function edit04()
-    {
-        $records = SeminarDetail::where('speaker_id', Auth::id())->get();
-        return view('speaker.record', compact('records'));
-    }
 }

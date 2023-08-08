@@ -857,6 +857,9 @@ select {
 .h-full {
   height: 100%;
 }
+.h-80 {
+  height: 20rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -907,6 +910,12 @@ select {
 }
 .w-full {
   width: 100%;
+}
+.w-80 {
+  width: 20rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .max-w-6xl {
   max-width: 72rem;

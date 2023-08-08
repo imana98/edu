@@ -1,12 +1,13 @@
 <?php
-use App\Http\Controllers\User\Owner\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\Owner\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\User\Owner\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\User\Owner\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\User\Owner\Auth\NewPasswordController;
-use App\Http\Controllers\User\Owner\Auth\PasswordResetLinkController;
-use App\Http\Controllers\User\Owner\Auth\RegisteredUserController;
-use App\Http\Controllers\User\Owner\Auth\VerifyEmailController;
+use App\Http\Controllers\Owner\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Owner\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Owner\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Owner\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Owner\Auth\NewPasswordController;
+use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Owner\Auth\RegisteredUserController;
+use App\Http\Controllers\Owner\Auth\VerifyEmailController;
+use App\Http\Controllers\Owner\OwnerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +21,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
+// Route::get('/', function () {
+//     return view('owner.welcome');
+// });
 
 Route::get('/dashboard', function() {
-    return view('dashboard');
+    return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
+
+Route::middleware('auth:owners')->group(function () {
+    Route::get('/', [OwnerController::class, 'index'])->name('seminars.index');
+    Route::get('/create/{id}', [OwnerController::class, 'create'])->name('seminars.create');
+    Route::post('/store/{id}', [OwnerController::class, 'store'])->name('seminars.store');
+    Route::get('/reserve', [OwnerController::class, 'reserve'])->name('seminars.reserve');
+    Route::get('/edit/{id}', [OwnerController::class, 'edit'])->name('seminars.edit');
+    Route::post('/update/{id}', [OwnerController::class, 'update'])->name('seminars.update');
+});
 
 
 Route::middleware('guest')->group(function () {

@@ -16,7 +16,7 @@
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">実施する講義の詳細を記入のうえ、登録ボタンを押してください。<br>講義内容はあとから変更できます。</p>
                       </div>
                       <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                        <form method="post" action="{{ route('user.seminars.edit03', ['id' => $seminar->id])}}">
+                        <form method="post" action="{{ route('owner.seminars.store', ['id' => $seminar->id])}}" enctype="multipart/form-data">
                           @csrf
                           <div class="flex p-2">
                             <div class="relative mr-12">
@@ -45,6 +45,12 @@
                             <div class="relative">
                               <label for="message" class="leading-7 text-sm text-gray-600">講義内容</label>
                               <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                            </div>
+                          </div>
+                          <div class="p-2">
+                            <div class="relative">
+                              <label for="file" class="leading-7 text-sm text-gray-600">タイトル</label>
+                              <input type="file" id="file" name="file" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                           </div>
                           <div class="p-2 w-full">

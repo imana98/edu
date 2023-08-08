@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\SeminarDetail;
+
 
 
 class Owner extends Authenticatable
@@ -40,4 +42,9 @@ class Owner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function seminar_detail()
+    {
+        return $this->hasMany(SeminarDetail::class);
+    }
 }

@@ -16,7 +16,8 @@
                       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">講義の編集ができます。<br>記入が終わりましたら編集ボタンを押してください。</p>
                     </div>
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                      <form action="" method="" class="">
+                      <form action="{{ route('owner.seminars.update', ['id' => $seminar->id]) }}" method="post" class="">
+                        @csrf
                         <div class="flex p-2">
                           <div class="relative mr-12">
                             <label for="name" class="leading-7 text-sm text-gray-600">研修名</label>
@@ -36,13 +37,13 @@
                         <div class="p-2">
                           <div class="relative">
                             <label for="title" class="leading-7 text-sm text-gray-600">タイトル</label>
-                            <input type="text" id="title" name="title" value="{{ $detail->title }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="title" name="title" value="{{ $seminar->title }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                           </div>
                         </div>
                         <div class="p-2 w-full">
                           <div class="relative">
                             <label for="message" class="leading-7 text-sm text-gray-600">講義内容</label>
-                            <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $detail->descriptions }}</textarea>
+                            <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $seminar->descriptions }}</textarea>
                           </div>
                         </div>
                         <div class="flex p-2 w-full">
