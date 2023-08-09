@@ -16,10 +16,13 @@ class SeminarDetail extends Model
     protected $fillable = [
         'seminar_id',
         'speaker_id',
+        'speaker_name',
+        'seminar_name',
+        'target',
         'title',
         'descriptions',
         'filename',
-        'is_opening',
+        'date',
     ];
 
     public function seminar() {

@@ -43,8 +43,8 @@ class SeminarSeeder extends Seeder
             'title' => "夏季研修のアンケート",
             'target' => "全職員",
             'explain' => "児童が安全に学校生活が送れるように知識を身につけましょう！",
-            'date' => "2023/08/10 11:11:11",
-            'deadline' => "2023/08/09 11:11:11",
+            'date' => "2023/08/15 11:11:11",
+            'deadline' => "2023/08/14 11:11:11",
             'created_at' => '2023/07/21 11:11:11'
         ]);
         DB::table('seminars')->insert([

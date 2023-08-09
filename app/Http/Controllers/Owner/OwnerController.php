@@ -26,9 +26,14 @@ class OwnerController extends Controller
 
     public function create($id)
     {
-        $seminar = Seminar::find($id)->first();
-        $speaker = Speaker::where('user_id', Auth::id())->first();
-        return view('owner.create', compact('seminar', 'speaker'));
+        $entry = SeminarDetail::where('seminar_id', $id)->where('speaker_id', Auth::id())->first();
+        if($entry){
+            return redirect()->route('owner.seminars.reserve');
+        }else {
+            $seminar = Seminar::findOrFail($id);
+            $speaker = Speaker::where('user_id', Auth::id())->first();
+            return view('owner.create', compact('seminar', 'speaker'));
+        }
     }
 
     public function store(Request $request, $id)
@@ -71,10 +76,25 @@ class OwnerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $seminar = SeminarDetail::where('seminar_id', $id)->update([
-            'title' => $request->title,
-            'descriptions' => $request->message,
-        ]);
-        return redirect()->route('owner.seminars.index');
+        $seminar = SeminarDetail::find($id);
+        $seminar->title = $request->title;
+        $seminar->descriptions = $request->message;
+        $seminar->update();
+        return redirect()->route('owner.seminars.reserve');
+    }
+
+    public function destroy($id)
+    {
+        $detail = SeminarDetail::findOrFail($id);
+        $detail->delete();
+        return redirect()->route('owner.seminars.reserve');
+    }
+
+    public function attend($id)
+    {
+        $entry = Entry::where('seminar_id', $id)->get();
+        $detail = entry->seminarDetail();
+        dd($detail);
+        return view('owner.attend');
     }
 }

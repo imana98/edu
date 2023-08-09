@@ -36,6 +36,8 @@ Route::middleware('auth:owners')->group(function () {
     Route::get('/reserve', [OwnerController::class, 'reserve'])->name('seminars.reserve');
     Route::get('/edit/{id}', [OwnerController::class, 'edit'])->name('seminars.edit');
     Route::post('/update/{id}', [OwnerController::class, 'update'])->name('seminars.update');
+    Route::get('/destroy/{id}', [OwnerController::class, 'destroy'])->name('seminars.destroy');
+    Route::get('/attend/{id}', [OwnerController::class, 'attend'])->name('seminars.attend');
 });
 
 
@@ -63,7 +65,7 @@ Route::middleware('guest')->group(function () {
                 ->name('password.update');
 });
 
-Route::middleware('auth:users')->group(function () {
+Route::middleware('auth:owners')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 

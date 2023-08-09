@@ -21,7 +21,7 @@
                         <div class="flex p-2">
                           <div class="relative mr-12">
                             <label for="name" class="leading-7 text-sm text-gray-600">研修名</label>
-                            <div class="text-center border px-8 py-2">{{ $seminar->title }}</div>
+                            <div class="text-center border px-8 py-2">{{ $seminar->seminar_name }}</div>
                           </div>
                           <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">開催日程</label>
@@ -46,10 +46,13 @@
                             <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $seminar->descriptions }}</textarea>
                           </div>
                         </div>
-                        <div class="flex p-2 w-full">
-                          <button type="button" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-800 rounded text-lg">削除</button>
-                          <button type="submit" class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">編集する</button>
+                        <div class="flex justify-end p-2 w-full">
+                          <button type="submit" class="flex  text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">編集する</button>
                         </div>
+                      </form>
+
+                      <form name="deleForm" action="{{ route('owner.seminars.destroy', ['id' => $seminar->id]) }}" method="get">
+                        <button id="deleteBtn" type="button" class="flex justify-start text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-800 rounded text-lg">削除</button>
                       </form>
                     </div>
                   </div>
@@ -58,5 +61,14 @@
           </div>
       </div>
   </div>
+  <script>
+    let d = document.getElementById("deleteBtn");
+    d.addEventListener('click', function(){
+      let yes = confirm('削除しますか？');
+      if(yes) {
+        document.deleForm.submit();
+      }
+    })
+  </script>
 </x-app-layout>
 
