@@ -12,16 +12,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Image;
 
 class OwnerController extends Controller
 {
     //
     public function index()
     {
+        $img = SeminarDetail::where('speaker_id', Auth::id())->where('seminar_id', 4)->first();
         $dt = Carbon::now();
         $dd = $dt->format('Y/m/d H:i:s');
         $seminars = Seminar::orderBy('date', 'desc')->paginate(3);
-        return view('owner.index', compact('dd', 'seminars'));
+        return view('owner.index', compact('dd', 'seminars', 'img'));
     }
 
     public function create($id)
@@ -42,8 +44,16 @@ class OwnerController extends Controller
             'title' =>'required|string|max:255',
             'message' =>'required|string|max:255',
         ]);
-        $seminar = Seminar::findOrFail($id);
+        $img = $request->file;
+        $filename = $img->getClientOriginalName();
+        $image = Image::make($img);
+        $image->orientate();
+        $image->fit(60, null, function($constraint){
+            $constraint->upsize();
+        });
+        $image->save(public_path() . '/storage/' . $filename);
 
+        $seminar = Seminar::findOrFail($id);
         $detail = new SeminarDetail();
         $detail->seminar_id = $seminar->id;
         $detail->speaker_id = Auth::id();
@@ -52,7 +62,7 @@ class OwnerController extends Controller
         $detail->target = $seminar->target;
         $detail->title = $request->title;
         $detail->descriptions = $request->message;
-        $detail->filename = $request->file;
+        $detail->filename = $filename;
         $detail->date = $seminar->date;
         $detail->save();
 
@@ -76,9 +86,11 @@ class OwnerController extends Controller
 
     public function update(Request $request, $id)
     {
+        dd($request->file);
         $seminar = SeminarDetail::find($id);
         $seminar->title = $request->title;
         $seminar->descriptions = $request->message;
+        $seminar->filename = $request->file;
         $seminar->update();
         return redirect()->route('owner.seminars.reserve');
     }

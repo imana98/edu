@@ -10,6 +10,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="md:p-6 bg-white border-b border-gray-200">
           <section class="text-gray-600 body-font">
+            {{-- <img src="{{ asset('storage/' . $img->filename) }}" alt="" style="border-radius: 50%;"> --}}
             <div class="container px-5 py-8 mx-auto">
               @if (session('message'))
                   <div class="bg-green-800 w-1/2 mx-auto px-2 text-white text-center py-2 my-4">
