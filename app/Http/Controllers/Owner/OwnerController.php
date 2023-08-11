@@ -48,7 +48,7 @@ class OwnerController extends Controller
         $filename = $img->getClientOriginalName();
         $image = Image::make($img);
         $image->orientate();
-        $image->fit(60, null, function($constraint){
+        $image->fit(200, null, function($constraint){
             $constraint->upsize();
         });
         $image->save(public_path() . '/storage/' . $filename);
@@ -105,8 +105,8 @@ class OwnerController extends Controller
     public function attend($id)
     {
         $entry = Entry::where('seminar_id', $id)->get();
-        $detail = entry->seminarDetail();
-        dd($detail);
+        // $detail = entry->seminarDetail();
+        // dd($detail);
         return view('owner.attend');
     }
 }
