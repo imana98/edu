@@ -104,9 +104,12 @@ class OwnerController extends Controller
 
     public function attend($id)
     {
-        $entry = Entry::where('seminar_id', $id)->get();
-        $detail = entry->seminarDetail();
-        dd($detail);
-        return view('owner.attend');
+        // dd($id);
+        $detail = SeminarDetail::where('seminar_id', $id)->where('speaker_id', Auth::id())->first();
+        $detail_id = $detail->id;
+        $entries = Entry::where('detail_id', $detail_id)->get();
+        // $detail = entry->seminarDetail();
+        // dd($entry);
+        return view('owner.attend', compact('entries', 'detail'));
     }
 }
