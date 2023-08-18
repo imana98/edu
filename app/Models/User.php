@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Speaker;
 use App\Models\Entry;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -54,5 +55,10 @@ class User extends Authenticatable
     public function entry()
     {
         return $this->hasMany(Entry::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

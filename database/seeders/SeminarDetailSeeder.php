@@ -35,7 +35,7 @@ class SeminarDetailSeeder extends Seeder
             'title' => '知的障害の国語',
             'descriptions' => '知的障がい児の国語の授業について講義をします。',
             'filename' => 'sample3.jpg',
-            'date' => "2023/08/15 11:11:11",
+            'date' => "2023/12/25 11:11:11",
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
@@ -46,7 +46,7 @@ class SeminarDetailSeeder extends Seeder
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
             'filename' => 'sample4.jpg',
-            'date' => "2023/08/15 11:11:11",
+            'date' => "2023/12/25 11:11:11",
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
@@ -57,7 +57,7 @@ class SeminarDetailSeeder extends Seeder
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
             'filename' => 'sample4.jpg',
-            'date' => "2023/08/15 11:11:11",
+            'date' => "2023/12/25 11:11:11",
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
@@ -68,7 +68,7 @@ class SeminarDetailSeeder extends Seeder
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
             'filename' => 'sample4.jpg',
-            'date' => "2023/08/10 11:11:11",
+            'date' => "2023/12/25 11:11:11",
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 5,

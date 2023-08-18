@@ -38,6 +38,10 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin'])->name('dashboard');
 
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/list/{id}', [SeminarController::class, 'list'])->name('seminars.list');
+});
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
