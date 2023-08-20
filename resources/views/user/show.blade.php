@@ -45,6 +45,7 @@
                               </div>
                             </form>
                             @endif
+                            <a href="{{ route('user.seminars.detail', ['id' => $entry->detail_id]) }}" class="underline decoration-2">詳しく見る</a>
                           </div>
                         </div>
                         @endforeach

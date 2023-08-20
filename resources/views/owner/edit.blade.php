@@ -16,7 +16,7 @@
                       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">講義の編集ができます。<br>記入が終わりましたら編集ボタンを押してください。</p>
                     </div>
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                      <form action="{{ route('owner.seminars.update', ['id' => $seminar->id]) }}" method="post" class="">
+                      <form action="{{ route('owner.seminars.update', ['id' => $seminar->id]) }}" method="post" class="" enctype="multipart/form-data">
                         @csrf
                         <div class="flex p-2">
                           <div class="relative mr-12">
@@ -51,7 +51,7 @@
                             <label for="images" class="leading-7 text-sm text-gray-600">画像</label>
                             <div>
                               <p>選択中の画像</p>
-                              {{-- <img src="{{ asset('storage/' . $seminar->filename) }}" alt=""> --}}
+                              <img src="{{ asset('storage/' . $seminar->filename) }}" alt="">
                             </div>
                             <input type="file" id="images" name="images" value="" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                           </div>

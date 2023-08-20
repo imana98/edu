@@ -79,18 +79,27 @@ class OwnerController extends Controller
 
     public function edit($id)
     {
-        $seminar = SeminarDetail::where('seminar_id', $id)->first();
+        $seminar = SeminarDetail::where('seminar_id', $id)->where('speaker_id', Auth::id())->first();
         $speaker = DB::table('owners')->where('user_id', Auth::id())->first();
         return view('owner.edit', compact('seminar', 'speaker'));
     }
 
     public function update(Request $request, $id)
     {
-        dd($request->file);
         $seminar = SeminarDetail::find($id);
         $seminar->title = $request->title;
         $seminar->descriptions = $request->message;
-        $seminar->filename = $request->file;
+        if($request->images) {
+            $img = $request->images;
+            $filename = $img->getClientOriginalName();
+            $images = Image::make($img);
+            $images->orientate();
+            $images->fit(200, null, function($constraint) {
+                $constraint->upsize();
+            });
+            $images->save(public_path() . '/storage/' . $filename);
+            $seminar->filename = $filename;
+        }
         $seminar->update();
         return redirect()->route('owner.seminars.reserve');
     }
@@ -104,9 +113,9 @@ class OwnerController extends Controller
 
     public function attend($id)
     {
-        $entry = Entry::where('seminar_id', $id)->get();
+        $entry = Entry::where('seminar_id', $id)->where('user_id', Auth::id())->get();
         // $detail = entry->seminarDetail();
-        // dd($detail);
+        // dd($entry);
         return view('owner.attend');
     }
 }
