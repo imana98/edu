@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::OWNER_HOME);
+        return redirect()->intended('/owner/dashboard');
     }
 
     /**

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             SeminarDetailSeeder::class,
             EntrySeeder::class,
             RecordSeeder::class,
+            ProfileSeeder::class,
         ]);
     }
 }

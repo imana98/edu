@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Seminar;
+use App\Models\SeminarDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Speaker;
@@ -65,5 +66,13 @@ class SeminarController extends Controller
     {
         Seminar::findOrFail($id)->delete();
         return redirect()->route('admin.seminars.index')->with(['message' => '削除しました', 'status' => 'alert']);
+    }
+
+    public function list($id)
+    {
+        // dd($id);
+        $seminars = SeminarDetail::where('seminar_id', $id)->get();
+        $title = Seminar::findOrFail($id);
+        return view('admin.seminars.list', compact('seminars', 'title'));
     }
 }

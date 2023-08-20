@@ -8,7 +8,7 @@ use App\Models\Seminar;
 use App\Models\SeminarDetail;
 use App\Models\Entry;
 use App\Models\Record;
-use App\Models\Speaker;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -85,11 +85,23 @@ class SeminarController extends Controller
         $seminars = SeminarDetail::where('seminar_id', $id)->get();
         return redirect()->route('user.seminars.show', ['id' => $id])->with(compact('speaker_id'));
     }
-
+  
     public function detail($id)
     {
         $detail = SeminarDetail::findOrFail($id);
         // dd($detail);
         return view('user.detail', compact('detail'));
     }
+
+    public function profile()
+    {
+        $profile = Profile::where('user_id', Auth::id())->first();
+        return view('user.profile', compact('profile'));
+    }
+
+    public function image(Request $request)
+    {
+        dd($request->file);
+    }
+
 }
