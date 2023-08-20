@@ -16,7 +16,7 @@
                         @foreach ($records as $record)
                         <div class="py-8 px-4 lg:w-1/3">
                           <div class="h-full flex items-start border-2 p-4 relative">
-                            <div class="flex-grow">
+                            <div class="flex-grow w-20">
                               @if($record->date < $dd)
                               <div class="absolute inset-0 bg-neutral-700 bg-opacity-50 text-center">
                                 <p class="block my-12 text-2xl text-white">開講済み</p>
@@ -25,7 +25,9 @@
                               <h2 class="tracking-widest text-xs title-font font-medium text-green-500 mb-1">開講日【{{ $record->date  }}】</h2>
                               <h1 class="title-font text-xl font-medium text-gray-900 mb-3">研修名：{{ $record->seminar_name }}</h1>
                               <p class="leading-relaxed mb-5">講義名：{{ $record->title }}</p>
-                              <p class="leading-relaxed mb-5">講義内容：{{ $record->descriptions }}</p>
+                              <div>
+                                <p class="leading-relaxed mb-5">講義内容：{{ $record->descriptions }}</p>
+                              </div>
                               <a class="inline-flex items-center">
                                 <img alt="blog" src="{{ asset('images/speaker01.png') }}" class="w-8 h-8">
                                 <span class="flex-grow flex flex-col pl-3">

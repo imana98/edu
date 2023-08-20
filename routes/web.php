@@ -25,6 +25,7 @@ Route::middleware('auth:users')->group(function () {
     Route::get('entry/{id}', [SeminarController::class, 'entry'])->name('seminars.entry');
     Route::get('reserve', [SeminarController::class, 'reserve'])->name('seminars.reserve');
     Route::get('edit/{id}', [SeminarController::class, 'edit'])->name('seminars.edit');
+    Route::get('detail/{id}', [SeminarController::class, 'detail'])->name('seminars.detail');
     Route::get('profile', [SeminarController::class, 'profile'])->name('seminars.profile');
     Route::post('image', [SeminarController::class, 'image'])->name('seminars.image');
 
