@@ -16,7 +16,7 @@
                       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">講義の編集ができます。<br>記入が終わりましたら編集ボタンを押してください。</p>
                     </div>
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                      <form action="{{ route('owner.seminars.update', ['id' => $seminar->id]) }}" method="post" class="">
+                      <form action="{{ route('owner.seminars.update', ['id' => $seminar->id]) }}" method="post" class="" enctype="multipart/form-data">
                         @csrf
                         <div class="flex p-2">
                           <div class="relative mr-12">

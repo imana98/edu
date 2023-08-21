@@ -25,7 +25,11 @@ class CreateSeminarDetailsTable extends Migration
             ->onDelete('cascade');
             $table->string('title');
             $table->text('descriptions');
-            $table->string('filename');
+            $table->string('filename')->nullable();
+            $table->string('filename02')->nullable();
+            $table->string('filename03')->nullable();
+            $table->string('filename04')->nullable();
+            $table->string('filename05')->nullable();
             $table->boolean('is_opening');
             $table->timestamps();
         });

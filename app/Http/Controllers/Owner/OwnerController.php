@@ -8,6 +8,7 @@ use App\Models\Seminar;
 use App\Models\SeminarDetail;
 use App\Models\Speaker;
 use App\Models\Entry;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -48,7 +49,7 @@ class OwnerController extends Controller
         $filename = $img->getClientOriginalName();
         $image = Image::make($img);
         $image->orientate();
-        $image->fit(60, null, function($constraint){
+        $image->fit(200, null, function($constraint){
             $constraint->upsize();
         });
         $image->save(public_path() . '/storage/' . $filename);
@@ -79,18 +80,25 @@ class OwnerController extends Controller
 
     public function edit($id)
     {
-        $seminar = SeminarDetail::where('seminar_id', $id)->first();
+        $seminar = SeminarDetail::findOrFail($id);
         $speaker = DB::table('owners')->where('user_id', Auth::id())->first();
         return view('owner.edit', compact('seminar', 'speaker'));
     }
 
     public function update(Request $request, $id)
     {
-        dd($request->file);
+        $img = $request->images;
+        $filename = $img->getClientOriginalName();
+        $image = Image::make($img);
+        $image->orientate();
+        $image->fit(200, null, function($constraint){
+            $constraint->upsize();
+        });
+        $image->save(public_path() . '/storage/' . $filename);
         $seminar = SeminarDetail::find($id);
         $seminar->title = $request->title;
         $seminar->descriptions = $request->message;
-        $seminar->filename = $request->file;
+        $seminar->filename = $filename;
         $seminar->update();
         return redirect()->route('owner.seminars.reserve');
     }
@@ -111,5 +119,16 @@ class OwnerController extends Controller
         // $detail = entry->seminarDetail();
         // dd($entry);
         return view('owner.attend', compact('entries', 'detail'));
+    }
+
+    public function survey()
+    {
+        $surveys = Survey::all();
+        return view('owner.survey', compact('surveys'));
+    }
+
+    public function list($id)
+    {
+        dd($id);
     }
 }

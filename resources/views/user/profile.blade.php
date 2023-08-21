@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
                     <p class="text-xl">{{ $profile->user->name }}</p>
-                    <div class="flex justify-center"><img src="{{ asset('storage/' . $profile->filename) }}" alt=""></div>
+                    <div class="flex justify-center"><img class="rounded-full" src="{{ asset('storage/' . $profile->filename) }}" alt=""></div>
                     <form action="{{ route('user.seminars.image') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file">

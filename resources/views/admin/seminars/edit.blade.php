@@ -52,7 +52,7 @@
                             </div>
                           </div>
                           <div class="p-2 w-full mt-4 flex justify-around">
-                            <button type="button" onclick="location.href='{{ route('admin.seminars.index') }}'" class="flex mx-auto text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">管理画面に戻る</button>
+                            <button type="button" onclick="window.history.back();" class="flex mx-auto text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">詳細画面に戻る</button>
                             <button type="submit" class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">編集する</button>
                           </div>
                       </div>

@@ -8,6 +8,7 @@ use App\Models\SeminarDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Speaker;
+use App\Models\Survey;
 
 class SeminarController extends Controller
 {
@@ -68,11 +69,60 @@ class SeminarController extends Controller
         return redirect()->route('admin.seminars.index')->with(['message' => '削除しました', 'status' => 'alert']);
     }
 
-    public function list($id)
+    public function list()
     {
         // dd($id);
+        $surveys = Survey::all();
+        return view('admin.seminars.list', compact('surveys'));
+    }
+
+    public function detail($id)
+    {
+        // dd($id);
+        // $detail = SeminarDetail::findOrFail($id);
+        $survey = Survey::where('seminar_id', $id)->first();
         $seminars = SeminarDetail::where('seminar_id', $id)->get();
-        $title = Seminar::findOrFail($id);
-        return view('admin.seminars.list', compact('seminars', 'title'));
+        $seminar = Seminar::findOrFail($id);
+        return view('admin.seminars.detail', compact('survey', 'seminars', 'seminar'));
+    }
+
+    public function survey($id)
+    {
+        $seminar = Seminar::findOrFail($id);
+        return view('admin.seminars.survey', compact('seminar'));
+    }
+
+    public function make(Request $request, $id)
+    {
+        $survey = new Survey();
+        $survey->seminar_id = $id;
+        $survey->title = $request->title;
+        $survey->question01 = $request->question01;
+        $survey->question02 = $request->question02;
+        $survey->question03 = $request->question03;
+        $survey->question04 = $request->question04;
+        $survey->save();
+
+        return redirect()->route('admin.seminars.index');
+    }
+
+    public function edit_survey($id)
+    {
+        $survey = Survey::where('seminar_id', $id)->first();
+        return view('admin.seminars.survey_edit', compact('survey'));
+    }
+
+    public function update_survey(Request $request, $id)
+    {
+        // dd($id);
+        Survey::findOrFail($id)->update([
+            'title' => $request->title,
+            'question01' => $request->question01,
+            'question02' => $request->question02,
+            'question03' => $request->question03,
+            'question04' => $request->question04,
+        ]);
+
+    return redirect()->route('admin.seminars.list');
     }
 }

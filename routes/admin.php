@@ -39,7 +39,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth:admin'])->name('dashboard');
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/list/{id}', [SeminarController::class, 'list'])->name('seminars.list');
+    Route::get('/list', [SeminarController::class, 'list'])->name('seminars.list');
+    Route::get('/detail/{id}', [SeminarController::class, 'detail'])->name('seminars.detail');
+    Route::get('/survey/{id}', [SeminarController::class, 'survey'])->name('seminars.survey');
+    Route::post('/make/{id}', [SeminarController::class, 'make'])->name('seminars.make');
+    Route::get('/answer', [SeminarController::class, 'answer'])->name('seminars.answer');
+    Route::get('/edit/survey/{id}', [SeminarController::class, 'edit_survey'])->name('seminars.edit.survey');
+    Route::put('/update/survey/{id}', [SeminarController::class, 'update_survey'])->name('seminars.survey.update');
 });
 
 

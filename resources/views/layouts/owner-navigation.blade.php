@@ -17,8 +17,11 @@
                     <x-nav-link :href="route('owner.seminars.index')" :active="request()->routeIs('owner.seminars.index')">
                         研修一覧
                     </x-nav-link>
-                    <x-nav-link :href="route('owner.seminars.reserve')" :active="request()->routeIs('user.seminars.reserve')">
+                    <x-nav-link :href="route('owner.seminars.reserve')" :active="request()->routeIs('owner.seminars.reserve')">
                         開講予定／履歴
+                    </x-nav-link>
+                    <x-nav-link :href="route('owner.seminars.survey')" :active="request()->routeIs('owner.seminars.survey')">
+                        アンケート一覧
                     </x-nav-link>
                 </div>
             </div>
