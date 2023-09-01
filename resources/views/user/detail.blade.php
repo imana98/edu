@@ -13,7 +13,7 @@
                     <div class="container px-5 py-16 mx-auto flex flex-col">
                       <div class="lg:w-4/6 mx-auto">
                         <div class="h-64 overflow-hidden flex justify-around">
-                          <img alt="content" class="" src="{{ asset('images/' . $detail->filename) }}">
+                          {{-- <img alt="content" class="" src="{{ asset('images/' . $detail->filename) }}"> --}}
                           <img alt="content" class="" src="{{ asset('storage/' . $detail->filename) }}">
                         </div>
                         <div class="flex flex-col sm:flex-row mt-10">
