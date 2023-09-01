@@ -14,6 +14,7 @@
                       <div class="lg:w-4/6 mx-auto">
                         <div class="h-64 overflow-hidden flex justify-around">
                           <img alt="content" class="" src="{{ asset('images/' . $detail->filename) }}">
+                          <img alt="content" class="" src="{{ asset('storage/' . $detail->filename) }}">
                         </div>
                         <div class="flex flex-col sm:flex-row mt-10">
                           <div class="sm:w-1/3 sm:pr-8 sm:py-8">
