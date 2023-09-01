@@ -56,8 +56,8 @@
             </div>
         </form>
         <div class="flex justify-center gap-6 mt-10">
-            <a href="{{ route('admin.login') }}" class="underline decoration-2 flex flex-col justify-end"><img class="mx-auto " src="{{ asset('storage/admin.png') }}" alt="" width="60">管理者ログイン</a>
-            <a href="{{ route('user.login') }}" class="underline decoration-2"><img class="mx-auto " src="{{ asset('storage/user.png') }}" alt="" width="60">受講者ログイン</a>
+            <a href="{{ route('admin.login') }}" class="underline decoration-2 flex flex-col justify-end"><img class="mx-auto " src="{{ asset('images/admin.png') }}" alt="" width="60">管理者ログイン</a>
+            <a href="{{ route('user.login') }}" class="underline decoration-2"><img class="mx-auto " src="{{ asset('images/user.png') }}" alt="" width="60">受講者ログイン</a>
         </div>
     </x-auth-card>
 </x-guest-layout>
