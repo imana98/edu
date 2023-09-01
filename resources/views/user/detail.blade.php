@@ -28,6 +28,7 @@
                           </div>
                         </div>
                       </div>
+                      <button onclick="history.back()" class="underline">戻る</button>
                     </div>
                   </section>
               </div>

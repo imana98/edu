@@ -13,13 +13,22 @@
                   <div class="container px-5 py-18 mx-auto">
                     <div class="flex flex-col text-center w-full mb-8 mt-4">
                       <div class="flex justify-end">
+                        <form id="" action="{{ route('admin.seminars.destroy', $seminar->id) }}" method="get">
+                            <button type="submit" class="mr-4 text-black bg-slate-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-red-500 rounded text-sm">研修を削除</button>
+                          </td>
+                        </form>
                         @if ($survey)
-                          <button onclick="location.href='{{ route('admin.seminars.edit.survey', $seminar->id) }}'" class="mr-4 text-black bg-orange-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-orange-600 rounded text-sm">アンケート作成済み</button>
+                          <button onclick="location.href='{{ route('admin.seminars.edit.survey', $survey->id) }}'" class="mr-4 text-black bg-gray-400 border-0 py-2 md:px-8 focus:outline-none hover:bg-gray-600 rounded text-sm">アンケート作成済み</button>
                         @elseif(!$survey)
                           <button onclick="location.href='{{ route('admin.seminars.survey', $seminar->id) }}'" class="mr-4 text-black bg-orange-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-orange-600 rounded text-sm">アンケート作成</button>
                         @endif
-                        <button onclick="location.href='{{ route('admin.seminars.edit', $seminar->id) }}'" class="mr-4 text-black bg-green-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-green-600 rounded text-sm">研修内容の編集</button>
+                        <button onclick="location.href='{{ route('admin.seminars.edit', $seminar->id) }}'" class="mr-4 text-black bg-green-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-green-600 rounded text-sm">研修内容の確認／編集</button>
                     </div>
+                    <div class="mt-10 flex justify-center gap-4">
+
+                      {{-- <button type="button" onclick="window.history.back();" class=" text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">詳細画面に戻る</button> --}}
+                    </div>
+
                       <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">{{ $seminar->title }}</h1>
                   </div>
                   <p class="text-center">この研修に登録されている講義です</p>
@@ -47,25 +56,9 @@
                       </div>
                       @endforeach
                     </div>
-                    <div class="mt-10 flex justify-center gap-4">
-                      <form id="delete_{{ $seminar->id }}" action="{{ route('admin.seminars.destroy', ['seminar' => $seminar->id] )}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <a href="#" data-id="{{ $seminar->id }}" onclick="deletePost(this)" class="flex mx-auto text-black bg-slate-300 border-0 py-2 px-8 focus:outline-none hover:bg-slate-500 rounded text-sm">削除</a>
-                      </td>
-                    </form>
-                      {{-- <button type="button" onclick="window.history.back();" class=" text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">詳細画面に戻る</button> --}}
-                    </div>
+
                   </section>
           </div>
       </div>
   </div>
-  <script>
-    function deletePost(e) {
-      'use strict'
-      if(confirm('本当に削除していいですか。')) {
-        document.getElementById('delete_' + e.dataset.id).submit();
-      }
-    }
-  </script>
 </x-app-layout>

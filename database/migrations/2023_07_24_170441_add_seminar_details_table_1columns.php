@@ -14,7 +14,7 @@ class AddSeminarDetailsTable1columns extends Migration
     public function up()
     {
         Schema::table('seminar_details', function (Blueprint $table) {
-            $table->string('speaker_name')->after('speaker_id');
+            $table->string('speaker_name')->after('owner_id');
         });
     }
 

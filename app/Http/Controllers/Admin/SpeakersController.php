@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Speaker;
 use App\Models\User;
+use App\Models\Owner;
+use App\Models\SeminarDetail;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Throwable;
@@ -26,7 +28,7 @@ class SpeakersController extends Controller
      */
     public function index()
     {
-        $speakers = Speaker::select('id', 'name', 'created_at')->orderBy('created_at', 'desc')->paginate(5);
+        $speakers = Owner::select('id', 'name', 'created_at')->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.speakers.index', compact('speakers'));
     }
 
@@ -55,13 +57,16 @@ class SpeakersController extends Controller
         ]);
         $name = $request->name;
         $user_id = User::where('name', $name)->first('id');
-        $id = $user_id->id;
+        $email = User::select('email')->where('name', $request->name)->first();
 
-        Speaker::create([
-            'user_id' => $id,
-            'name' => $request->name,
-            'password' => Hash::make($request->password),
-        ]);
+
+        $owner = new Owner();
+        $owner->user_id = $user_id->id;
+        $owner->name = $request->name;
+        $owner->email = $email->email;
+        $owner->password = Hash::make($request->password);
+        $owner->save();
+
 
         return redirect()->route('admin.speakers.index')->with(['message' => '登録を完了しました。', 'status' => 'info']);
     }
@@ -74,7 +79,7 @@ class SpeakersController extends Controller
      */
     public function edit($id)
     {
-        $speaker = Speaker::findOrFail($id);
+        $speaker = Owner::findOrFail($id);
         return view('admin.speakers.edit', compact('speaker'));
     }
 
@@ -95,7 +100,7 @@ class SpeakersController extends Controller
 
         try{
             DB::transaction(function () use($request, $id) {
-                $speaker = Speaker::findOrFail($id);
+                $speaker = Owner::findOrFail($id);
                 $speaker->name = $request->name;
                 $speaker->password = Hash::make($request->password);
                 $speaker->save();
@@ -120,7 +125,8 @@ class SpeakersController extends Controller
      */
     public function destroy($id)
     {
-        Speaker::findOrFail($id)->delete();
+        Owner::findOrFail($id)->delete();
+        // SeminarDetail::
         return redirect()->route('admin.speakers.index')->with(['message' => '削除しました。', 'status' => 'alert']);
     }
 }

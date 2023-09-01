@@ -19,17 +19,13 @@ class CreateSeminarDetailsTable extends Migration
             ->constrained('seminars')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('speaker_id')
+            $table->foreignId('owner_id')
             ->constrained()
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('title');
             $table->text('descriptions');
-            $table->string('filename')->nullable();
-            $table->string('filename02')->nullable();
-            $table->string('filename03')->nullable();
-            $table->string('filename04')->nullable();
-            $table->string('filename05')->nullable();
+            $table->string('filename');
             $table->boolean('is_opening');
             $table->timestamps();
         });

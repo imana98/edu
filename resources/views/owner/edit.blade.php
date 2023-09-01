@@ -49,7 +49,7 @@
                         <div class="p-2">
                           <div class="relative">
                             <label for=images" class="leading-7 text-sm text-gray-600">画像</label>
-                            <div>
+                            <div class="mb-5">
                               <p>選択中の画像</p>
                               <img src="{{ asset('storage/' . $seminar->filename) }}" alt="">
                             </div>

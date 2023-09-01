@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            プロフィール
         </h2>
     </x-slot>
 
@@ -9,7 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
-                    <p class="text-xl">{{ $profile->user->name }}</p>
+                    <p class="text-xl font-bold mb-5">{{ $profile->user->name }}<span class="font-normal">先生</span></p>
+                    <p>画像の変更ができます。</p>
                     <div class="flex justify-center"><img class="rounded-full" src="{{ asset('storage/' . $profile->filename) }}" alt=""></div>
                     <form action="{{ route('user.seminars.image') }}" method="post" enctype="multipart/form-data">
                         @csrf

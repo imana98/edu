@@ -17,7 +17,7 @@ class SeminarDetailSeeder extends Seeder
     {
         DB::table('seminar_details')->insert([
             'seminar_id' => 1,
-            'speaker_id' => 1,
+            'owner_id' => 1,
             'speaker_name' => '今岡真菜',
             'seminar_name' => '夏季研修',
             'target' => "全職員",
@@ -28,9 +28,9 @@ class SeminarDetailSeeder extends Seeder
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
-            'speaker_id' => 4,
+            'owner_id' => 4,
             'speaker_name' => '柴山司馬太郎',
-            'seminar_name' => '夏季研修のアンケート',
+            'seminar_name' => '夏季研修',
             'target' => "全職員",
             'title' => '知的障害の国語',
             'descriptions' => '知的障がい児の国語の授業について講義をします。',
@@ -39,9 +39,9 @@ class SeminarDetailSeeder extends Seeder
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
-            'speaker_id' => 1,
+            'owner_id' => 1,
             'speaker_name' => '今岡真菜',
-            'seminar_name' => '夏季研修のアンケート',
+            'seminar_name' => '夏季研修',
             'target' => "全職員",
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
@@ -50,9 +50,9 @@ class SeminarDetailSeeder extends Seeder
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
-            'speaker_id' => 2,
+            'owner_id' => 2,
             'speaker_name' => '小林小太郎',
-            'seminar_name' => '夏季研修のアンケート',
+            'seminar_name' => '夏季研修',
             'target' => "全職員",
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
@@ -61,9 +61,9 @@ class SeminarDetailSeeder extends Seeder
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 4,
-            'speaker_id' => 3,
+            'owner_id' => 3,
             'speaker_name' => '金田かね子',
-            'seminar_name' => '夏季研修のアンケート',
+            'seminar_name' => '夏季研修',
             'target' => "全職員",
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',
@@ -72,9 +72,9 @@ class SeminarDetailSeeder extends Seeder
         ]);
         DB::table('seminar_details')->insert([
             'seminar_id' => 5,
-            'speaker_id' => 3,
+            'owner_id' => 3,
             'speaker_name' => '金田かね子',
-            'seminar_name' => '夏季研修のアンケート',
+            'seminar_name' => '夏季研修',
             'target' => "全職員",
             'title' => '知的障害の自立活動',
             'descriptions' => '知的障がい児の自立活動の授業について講義をします。',

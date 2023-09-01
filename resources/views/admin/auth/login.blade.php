@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
-        管理者用
+        <div class="items-center text-center"><p>【管理者用】</p></div>
         <x-slot name="logo">
             <div class="w-32">
                 <a href="/">
@@ -56,8 +56,8 @@
             </div>
         </form>
         <div class="flex justify-center gap-6 mt-10">
-            <a href="{{ route('user.login') }}" class="underline decoration-2">受講者ログイン</a>
-            <a href="{{ route('owner.login') }}" class="underline decoration-2">講義者ログイン</a>
+            <a href="{{ route('user.login') }}" class="underline decoration-2"><img class="mx-auto " src="{{ asset('storage/user.png') }}" alt="" width="60">受講者ログイン</a>
+            <a href="{{ route('owner.login') }}" class="underline decoration-2"><img class="mx-auto " src="{{ asset('storage/speaker.png') }}" alt="" width="60">講義者ログイン</a>
         </div>
     </x-auth-card>
 </x-guest-layout>

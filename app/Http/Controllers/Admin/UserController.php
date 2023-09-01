@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Owner;
 use App\Models\Speaker;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -114,7 +115,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        $speaker = Speaker::where('user_id', $id)->first();
+        $speaker = Owner::where('user_id', $id)->first();
         if($speaker) {
             $speaker->delete();
         }

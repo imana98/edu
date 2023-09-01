@@ -19,5 +19,30 @@ class ProfileSeeder extends Seeder
             'filename' => 'icon02.png',
             'created_at' => '2023/07/13 11:11:11',
         ]);
+        DB::table('profiles')->insert([
+            'user_id' => 2,
+            'filename' => 'icon02.png',
+            'created_at' => '2023/07/13 11:11:11',
+        ]);
+        DB::table('profiles')->insert([
+            'user_id' => 3,
+            'filename' => 'icon02.png',
+            'created_at' => '2023/07/13 11:11:11',
+        ]);
+        DB::table('profiles')->insert([
+            'user_id' => 4,
+            'filename' => 'icon02.png',
+            'created_at' => '2023/07/13 11:11:11',
+        ]);
+        DB::table('profiles')->insert([
+            'user_id' => 5,
+            'filename' => 'icon02.png',
+            'created_at' => '2023/07/13 11:11:11',
+        ]);
+        DB::table('profiles')->insert([
+            'user_id' => 6,
+            'filename' => 'icon02.png',
+            'created_at' => '2023/07/13 11:11:11',
+        ]);
     }
 }

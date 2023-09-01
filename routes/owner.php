@@ -39,7 +39,7 @@ Route::middleware('auth:owners')->group(function () {
     Route::get('/destroy/{id}', [OwnerController::class, 'destroy'])->name('seminars.destroy');
     Route::get('/attend/{id}', [OwnerController::class, 'attend'])->name('seminars.attend');
     Route::get('/survey', [OwnerController::class, 'survey'])->name('seminars.survey');
-    Route::get('/list/{id}', [OwnerController::class, 'list'])->name('seminars.list');
+    Route::get('/list', [OwnerController::class, 'list'])->name('seminars.list');
 });
 
 

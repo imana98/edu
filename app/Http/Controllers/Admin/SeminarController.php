@@ -59,8 +59,7 @@ class SeminarController extends Controller
             'deadline' => $request->deadline,
             'explain' => $request->explain,
         ]);
-
-        return redirect()->route('admin.seminars.index')->with(['message' => '編集しました', 'status' => 'info']);
+        return back()->with(['message' => '編集しました', 'status' => 'alert']);
     }
 
     public function destroy($id)
@@ -71,25 +70,29 @@ class SeminarController extends Controller
 
     public function list()
     {
-        // dd($id);
         $surveys = Survey::all();
         return view('admin.seminars.list', compact('surveys'));
     }
 
     public function detail($id)
     {
-        // dd($id);
-        // $detail = SeminarDetail::findOrFail($id);
         $survey = Survey::where('seminar_id', $id)->first();
         $seminars = SeminarDetail::where('seminar_id', $id)->get();
         $seminar = Seminar::findOrFail($id);
         return view('admin.seminars.detail', compact('survey', 'seminars', 'seminar'));
     }
 
+    public function delete($id)
+    {
+        Seminar::findOrFail($id)->delete();
+        return redirect()->route('admin.seminars.index')->with(['message' => '削除しました', 'status' => 'alert']);
+    }
+
     public function survey($id)
     {
         $seminar = Seminar::findOrFail($id);
-        return view('admin.seminars.survey', compact('seminar'));
+        $speakers = SeminarDetail::select('speaker_name')->where('seminar_id', $id)->get();
+        return view('admin.seminars.survey', compact('seminar', 'speakers'));
     }
 
     public function make(Request $request, $id)
@@ -106,15 +109,16 @@ class SeminarController extends Controller
         return redirect()->route('admin.seminars.index');
     }
 
-    public function edit_survey($id)
+    public function edit_survey(Request $request,$id)
     {
-        $survey = Survey::where('seminar_id', $id)->first();
+        $survey = Survey::findOrFail($id)->first();
         return view('admin.seminars.survey_edit', compact('survey'));
     }
 
     public function update_survey(Request $request, $id)
     {
         // dd($id);
+        $seminar_id = Survey::select('seminar_id')->where('id', $id)->first();
         Survey::findOrFail($id)->update([
             'title' => $request->title,
             'question01' => $request->question01,
@@ -123,6 +127,12 @@ class SeminarController extends Controller
             'question04' => $request->question04,
         ]);
 
-    return redirect()->route('admin.seminars.list');
+        $seminar = Seminar::find($seminar_id);
+        return back()->with(['message' => '編集しました', 'status' => 'alert']);
+    }
+
+    public function delete_survey($id)
+    {
+
     }
 }

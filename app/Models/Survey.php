@@ -29,4 +29,8 @@ class Survey extends Model
     {
         return $this->belongsTo(SeminarDetail::class);
     }
+
+    public function seminar() {
+        return $this->belongsToMany(Seminar::class);
+    }
 }

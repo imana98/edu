@@ -14,14 +14,8 @@
                     <div class="flex flex-col text-center w-full mb-8">
                       <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900"></h1>
                     </div>
-                    @if (session('flash_message'))
-                    <div class="bg-green-800 w-1/2 mx-auto px-2 text-white text-center py-2 my-4">
-                      {{ session('flash_message') }}
-                    </div>
-                    @endif
                     <div class="flex flex-wrap justify-around -m-4">
                       @foreach ($surveys as $survey)
-                      @csrf
                       <div class="p-4 xl:w-1/4 md:w-1/2 w-full">
                         <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
                           <h2 class="text-sm tracking-widest title-font mb-1 font-medium">{{ $survey->title }}</h2>

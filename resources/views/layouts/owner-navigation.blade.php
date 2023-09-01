@@ -20,9 +20,9 @@
                     <x-nav-link :href="route('owner.seminars.reserve')" :active="request()->routeIs('owner.seminars.reserve')">
                         開講予定／履歴
                     </x-nav-link>
-                    <x-nav-link :href="route('owner.seminars.survey')" :active="request()->routeIs('owner.seminars.survey')">
+                    {{-- <x-nav-link :href="route('owner.seminars.survey')" :active="request()->routeIs('owner.seminars.survey')">
                         アンケート一覧
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
