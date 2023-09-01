@@ -86,6 +86,13 @@ class SeminarController extends Controller
         $seminars = SeminarDetail::where('seminar_id', $id)->get();
         return redirect()->route('user.seminars.show', ['id' => $id])->with(compact('speaker_id'));
     }
+  
+    public function detail($id)
+    {
+        $detail = SeminarDetail::findOrFail($id);
+        // dd($detail);
+        return view('user.detail', compact('detail'));
+    }
 
     public function profile()
     {
