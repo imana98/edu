@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeminarDetailsTable extends Migration
+class CreateSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,17 @@ class CreateSeminarDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seminar_details', function (Blueprint $table) {
+        Schema::create('surveys', function (Blueprint $table) {
             $table->id();
             $table->foreignId('seminar_id')
             ->constrained('seminars')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('owner_id')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->string('title');
-            $table->text('descriptions');
-            $table->string('filename');
-            $table->boolean('is_opening');
+            $table->string('question01');
+            $table->string('question02');
+            $table->string('question03');
+            $table->string('question04');
             $table->timestamps();
         });
     }
@@ -38,6 +35,6 @@ class CreateSeminarDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seminar_details');
+        Schema::dropIfExists('surveys');
     }
 }

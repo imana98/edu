@@ -8,6 +8,8 @@ use App\Models\Seminar;
 use App\Models\Entry;
 use App\Models\Record;
 use App\Models\Owner;
+use App\Models\Survey;
+use App\Models\Answer;
 
 class SeminarDetail extends Model
 {
@@ -40,5 +42,14 @@ class SeminarDetail extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function survey()
+    {
+        return $this->hasOne(Survey::class);
+    }
+
+    public function answer() {
+        return $this->hasMany(Answer::class);
     }
 }

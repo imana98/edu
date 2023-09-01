@@ -14,9 +14,6 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        dashboard
-                    </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                         教員管理
                     </x-nav-link>
@@ -26,6 +23,9 @@
                     <x-nav-link :href="route('admin.seminars.index')" :active="request()->routeIs('admin.seminars.index')">
                         研修管理
                     </x-nav-link>
+                    {{-- <x-nav-link :href="route('admin.seminars.list')" :active="request()->routeIs('admin.seminars.list')">
+                        アンケート管理
+                    </x-nav-link> --}}
                 </div>
             </div>
 

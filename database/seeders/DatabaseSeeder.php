@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Speaker;
+use App\Models\Survey;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,8 @@ class DatabaseSeeder extends Seeder
             EntrySeeder::class,
             RecordSeeder::class,
             ProfileSeeder::class,
+            SurveySeeder::class,
+            AnswerSeeder::class,
         ]);
     }
 }

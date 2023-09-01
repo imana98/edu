@@ -9,9 +9,11 @@ use App\Models\SeminarDetail;
 use App\Models\Entry;
 use App\Models\Record;
 use App\Models\Profile;
+use App\Models\Survey;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Image;
 
 
 
@@ -70,7 +72,6 @@ class SeminarController extends Controller
         $reserves = Entry::where('user_id', Auth::id())
             ->with(['user', 'seminarDetail.seminar'])
             ->get();
-
         $dt = Carbon::now();
         $dd = $dt->format('Y/m/d H:i:s');
         $date = DB::table('seminars')->select('date')->get();
@@ -101,7 +102,30 @@ class SeminarController extends Controller
 
     public function image(Request $request)
     {
-        dd($request->file);
+        // dd($request->file);
+        $img = $request->file;
+        if($img) {
+            $filename = $img->getClientOriginalName();
+            $image = Image::make($img);
+            $image->orientate();
+            $image->fit(60, null, function($constraint){
+                $constraint->upsize();
+            });
+            $image->save(public_path() . '/storage/' . $filename);
+            $detail = Profile::findOrFail(Auth::id());
+            $detail->filename = $filename;
+            $detail->save();
+        }
+
+        return redirect()->route('user.seminars.profile');
+
+    }
+
+    public function detail($id)
+    {
+        $detail = SeminarDetail::findOrFail($id);
+        // dd($detail);
+        return view('user.detail', compact('detail'));
     }
 
 }

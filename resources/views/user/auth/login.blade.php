@@ -1,10 +1,12 @@
 <x-guest-layout>
     <x-auth-card>
-        受講者用
+        <div class="items-center text-center"><p>【受講者用】</p></div>
         <x-slot name="logo">
+            <div class="w-32">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
+            </div>
         </x-slot>
 
         <!-- Session Status -->
@@ -54,8 +56,8 @@
             </div>
         </form>
         <div class="flex justify-center gap-6 mt-10">
-            <a href="{{ route('admin.login') }}" class="underline decoration-2">管理者ログイン</a>
-            <a href="{{ route('owner.login') }}" class="underline decoration-2">講義者ログイン</a>
+            <a href="{{ route('admin.login') }}" class="underline decoration-2 flex flex-col justify-end"><img class="mx-auto" src="{{ asset('storage/admin.png') }}" alt="" width="60">管理者ログイン</a>
+            <a href="{{ route('owner.login') }}" class="underline decoration-2"><img class="mx-auto" src="{{ asset('storage/speaker.png') }}" alt="" width="60">講義者ログイン</a>
         </div>
     </x-auth-card>
 </x-guest-layout>

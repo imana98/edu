@@ -12,8 +12,9 @@
                 <section class="text-gray-600 body-font relative">
                   <div class="container px-5 py-4 mx-auto">
                     <div class="flex flex-col text-center w-full">
-                      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">研修内容<br>編集フォーム</h1>
-                      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">変更内容を入力の上、更新ボタンを押してください。</p>
+                      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">研修内容<br>確認／編集</h1>
+                      <p class="lg:w-2/3 mx-auto leading-relaxed text-base"><span class="font-bold">変更がある場合</span>は<br>変更内容を入力の上、更新ボタンを押してください。</p>
+                      <x-flash-message status="session('status')" />
                     </div>
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form action="{{ route('admin.seminars.update', ['seminar' => $seminar->id]) }}" method="post">
@@ -52,7 +53,7 @@
                             </div>
                           </div>
                           <div class="p-2 w-full mt-4 flex justify-around">
-                            <button type="button" onclick="location.href='{{ route('admin.seminars.index') }}'" class="flex mx-auto text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">管理画面に戻る</button>
+                            <button type="button" onclick="location.href='{{ route('admin.seminars.detail', ['id' => $seminar->id]) }}'" class="flex mx-auto text-white bg-gray-400 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">詳細画面に戻る</button>
                             <button type="submit" class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">編集する</button>
                           </div>
                       </div>

@@ -39,7 +39,7 @@
                                 <div class="flex justify-end mb-8">
                                   <button onclick="location.href='{{ route('owner.seminars.attend', ['id' => $record->seminar_id]) }}'" class="flex text-white bg-orange-400 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">参加予定者</button>
                                 </div>
-                                <form action="{{ route('owner.seminars.edit', ['id' => $record->seminar_id]) }}" method="get">
+                                <form action="{{ route('owner.seminars.edit', ['id' => $record->id]) }}" method="get">
                                   <div class="flex justify-end"><button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 hover:bg-green-600 rounded text-lg">編集</button></div>
                                 </form>
                               </div>

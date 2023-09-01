@@ -20,9 +20,9 @@
                     <x-nav-link :href="route('user.seminars.reserve')" :active="request()->routeIs('user.seminars.reserve')">
                         受講
                     </x-nav-link>
-                    <x-nav-link :href="route('user.seminars.profile')" :active="request()->routeIs('user.seminars.profile')">
+                    {{-- <x-nav-link :href="route('user.seminars.profile')" :active="request()->routeIs('user.seminars.profile')">
                         プロフィール
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 

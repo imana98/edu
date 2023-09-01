@@ -36,11 +36,11 @@
                                 {{-- <td class="px-4 py-3">{{ $speaker->email }}</td> --}}
                                 <td class="px-4 py-3 text-lg text-gray-900">{{ $user->created_at->diffForHumans() }}</td>
                                 <td class="px-4 py-3 text-center flex">
-                                  <button onclick="location.href='{{ route('admin.users.edit', ['user' => $user->id]) }}'" class="flex mx-auto text-white bg-green-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-green-600 rounded text-sm">編集する</button>
+                                  <button onclick="location.href='{{ route('admin.users.edit', ['user' => $user->id]) }}'" class="flex mx-auto text-gray-900 bg-green-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-green-600 rounded text-sm">編集する</button>
                                 <form id="delete_{{ $user->id }}" action="{{ route('admin.users.destroy', ['user' => $user->id] )}}" method="post">
                                   @csrf
                                   @method('delete')
-                                    <a href="#" data-id="{{ $user->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-slate-300 border-0 py-2 md:px-4 focus:outline-none hover:bg-slate-500 rounded text-sm">削除</a>
+                                    <a href="#" data-id="{{ $user->id }}" onclick="deletePost(this)" class="flex mx-auto text-gray-900 bg-slate-300 border-0 py-2 md:px-4 focus:outline-none hover:bg-slate-500 rounded text-sm">削除</a>
                                   </td>
                                 </form>
                               </tr>

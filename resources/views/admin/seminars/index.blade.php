@@ -14,7 +14,7 @@
                           <div class="container md:px-5 mx-auto my-12">
                             <x-flash-message status="session('status')" />
                             <div class="flex justify-end mb-10">
-                              <button onclick="location.href='{{ route('admin.seminars.create') }}'" class="flex text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">登録する</button>
+                              <button onclick="location.href='{{ route('admin.seminars.create') }}'" class="flex text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">新規登録する</button>
                             </div>
                         <div class="w-full mx-auto overflow-auto">
                           <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -36,14 +36,7 @@
                                 <td class="px-4 py-3">{{ $seminar->date }}</td>
                                 <td class="px-4 py-3 text-lg text-gray-900">{{ $seminar->created_at->diffForHumans() }}</td>
                                 <td class="px-4 py-3 text-center flex">
-                                  <button onclick="location.href='{{ route('admin.seminars.edit', ['seminar' => $seminar->id]) }}'" class="flex mx-auto text-black bg-green-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-green-600 rounded text-sm">編集する</button>
-                                  <button onclick="location.href='{{ route('admin.seminars.list', $seminar->id) }}'" class="flex mx-auto text-black bg-orange-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-orange-600 rounded text-sm">登録中の講義</button>
-                                <form id="delete_{{ $seminar->id }}" action="{{ route('admin.seminars.destroy', ['seminar' => $seminar->id] )}}" method="post">
-                                  @csrf
-                                  @method('delete')
-                                    <a href="#" data-id="{{ $seminar->id }}" onclick="deletePost(this)" class="flex mx-auto text-black bg-slate-300 border-0 py-2 md:px-4 focus:outline-none hover:bg-slate-500 rounded text-sm">削除</a>
-                                  </td>
-                                </form>
+                                  <button onclick="location.href='{{ route('admin.seminars.detail', $seminar->id) }}'" class="flex mx-auto text-black bg-orange-300 border-0 py-2 md:px-8 focus:outline-none hover:bg-orange-600 rounded text-sm">詳細</button>
                               </tr>
                             </tbody>
                     @endforeach
@@ -56,12 +49,4 @@
             </div>
         </div>
     </div>
-    <script>
-      function deletePost(e) {
-        'use strict'
-        if(confirm('本当に削除していいですか。')) {
-          document.getElementById('delete_' + e.dataset.id).submit();
-        }
-      }
-    </script>
 </x-app-layout>

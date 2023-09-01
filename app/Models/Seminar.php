@@ -21,4 +21,8 @@ class Seminar extends Model
     public function seminarDetail() {
         return $this->belongsTo(SeminarDetail::class);
     }
+
+    public function survey() {
+        return $this->hasMany(Survey::class);
+    }
 }

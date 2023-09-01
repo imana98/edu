@@ -39,6 +39,8 @@
                                 <button type="submit" class="flex text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">参加する</button>
                               </div>
                             </form>
+                            <a href="{{ route('user.seminars.detail', ['id' => $seminar->id]) }}" class="underline decoration-2">詳しく見る</a>
+
                           </div>
                         </div>
                         @endforeach

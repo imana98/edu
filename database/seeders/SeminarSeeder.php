@@ -24,7 +24,7 @@ class SeminarSeeder extends Seeder
             'created_at' => '2023/07/13 11:11:11'
         ]);
         DB::table('seminars')->insert([
-            'title' => "冬季研修のアンケート",
+            'title' => "冬季研修",
             'target' => "初任者",
             'explain' => "2022年度冬季研修のアンケートの回答をお願いします！",
             'date' => "2022/01/25 11:11:11",
@@ -40,7 +40,7 @@ class SeminarSeeder extends Seeder
             'created_at' => '2023/07/13 11:11:11'
         ]);
         DB::table('seminars')->insert([
-            'title' => "夏季研修のアンケート",
+            'title' => "夏季研修",
             'target' => "全職員",
             'explain' => "児童が安全に学校生活が送れるように知識を身につけましょう！",
             'date' => "2023/12/25 11:11:11",
@@ -48,7 +48,7 @@ class SeminarSeeder extends Seeder
             'created_at' => '2023/07/21 11:11:11'
         ]);
         DB::table('seminars')->insert([
-            'title' => "夏季研修のアンケート",
+            'title' => "夏季研修",
             'target' => "全職員",
             'explain' => "児童が安全に学校生活が送れるように知識を身につけましょう！",
             'date' => "2023/07/25 16:00:11",
