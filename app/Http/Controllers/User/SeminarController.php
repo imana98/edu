@@ -117,7 +117,7 @@ class SeminarController extends Controller
     public function detail($id)
     {
         $detail = SeminarDetail::findOrFail($id);
-        // dd($detail);
+        dd($detail);
         return view('user.detail', compact('detail'));
     }
 
