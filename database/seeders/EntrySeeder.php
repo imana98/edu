@@ -17,9 +17,9 @@ class EntrySeeder extends Seeder
     {
         DB::table('entries')->insert([
             'user_id' => 1,
-            'detail_id' => 2,
+            'detail_id' => 6,
             'created_at' => '2023/07/13 11:11:11',
-            'seminar_id' => 4,
+            'seminar_id' => 5,
         ]);
         DB::table('entries')->insert([
             'user_id' => 2,

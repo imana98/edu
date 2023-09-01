@@ -89,6 +89,7 @@ class OwnerController extends Controller
     public function update(Request $request, $id)
     {
         $img = $request->images;
+
         $seminar = SeminarDetail::find($id);
         if($img) {
             $filename = $img->getClientOriginalName();
@@ -102,6 +103,7 @@ class OwnerController extends Controller
         }
         $seminar->title = $request->title;
         $seminar->descriptions = $request->message;
+
         $seminar->update();
         return redirect()->route('owner.seminars.edit', ['id' => $id]);
     }
@@ -137,3 +139,4 @@ class OwnerController extends Controller
         // dd($surveys);
     }
 }
+
