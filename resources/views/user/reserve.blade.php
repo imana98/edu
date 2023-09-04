@@ -15,8 +15,8 @@
                       <div class="-mx-4 -my-8">
                         <div class="py-8 px-4 lg:w-1/3">
                           <div class="h-full flex items-start border-2 p-4 relative">
-                            @foreach ($reserves as $reserve)
                             <div class="flex-grow w-20">
+                              @foreach ($reserves as $reserve)
                               @if($reserve->seminarDetail->date < $dd)
                               <div class="absolute inset-0 bg-neutral-700 bg-opacity-50 text-center">
                                 <p class="block my-12 text-2xl text-white">受講済み</p>
