@@ -1944,6 +1944,10 @@ select {
 }
 @media (min-width: 1024px) {
 
+  .lg\:flex {
+    display: flex;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
