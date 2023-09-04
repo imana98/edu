@@ -71,9 +71,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            {{-- <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link> --}}
+            <x-responsive-nav-link :href="route('user.seminars.index')" :active="request()->routeIs('user.seminars.index')">
+                研修一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('user.seminars.reserve')" :active="request()->routeIs('user.seminars.reserve')">
+                受講
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
