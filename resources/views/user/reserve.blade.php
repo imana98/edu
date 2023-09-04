@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                   <section class="text-gray-600 body-font">
                     <h3 class="text-3xl w-56 text-center mx-auto" style="background:linear-gradient(transparent 60%, rgb(179, 240, 167) 60%);">予定している研修</h3>
-                    <div class="container px-5 py-8 mx-auto">
+                    <div class="container px-5 py-8 mx-auto lg:flex">
                       <div class="flex flex-wrap -mx-4 -my-8">
                         @foreach ($reserves as $reserve)
                         <div class="py-8 px-4 lg:w-1/3">
