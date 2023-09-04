@@ -14,8 +14,8 @@
                     <div class="container px-5 py-8 mx-auto">
                       <div class="-mx-4 -my-8">
                         <div class="py-8 px-4 lg:w-1/3">
-                          @foreach ($reserves as $reserve)
                           <div class="h-full flex items-start border-2 p-4 relative">
+                            @foreach ($reserves as $reserve)
                             <div class="flex-grow w-20">
                               @if($reserve->seminarDetail->date < $dd)
                               <div class="absolute inset-0 bg-neutral-700 bg-opacity-50 text-center">
@@ -36,8 +36,8 @@
                                 <input type="hidden" name="speakerId" value={{ $reserve->seminarDetail->speaker_id }}>
                                 <div class="flex justify-end"><button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 hover:bg-green-600 rounded text-lg">変更する</button></div>
                               </form>
+                              @endforeach
                             </div>
-                            @endforeach
                           </div>
                         </div>
                       </div>
