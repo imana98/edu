@@ -12,9 +12,9 @@
                   <section class="text-gray-600 body-font">
                     <h3 class="text-3xl w-56 text-center mx-auto" style="background:linear-gradient(transparent 60%, rgb(179, 240, 167) 60%);">予定している研修</h3>
                     <div class="container px-5 py-8 mx-auto">
-                      <div class="flex flex-wrap -mx-4 -my-8">
-                        @foreach ($reserves as $reserve)
+                      <div class="-mx-4 -my-8">
                         <div class="py-8 px-4 lg:w-1/3">
+                          @foreach ($reserves as $reserve)
                           <div class="h-full flex items-start border-2 p-4 relative">
                             <div class="flex-grow w-20">
                               @if($reserve->seminarDetail->date < $dd)
@@ -37,9 +37,9 @@
                                 <div class="flex justify-end"><button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 hover:bg-green-600 rounded text-lg">変更する</button></div>
                               </form>
                             </div>
+                            @endforeach
                           </div>
                         </div>
-                        @endforeach
                       </div>
                     </div>
                   </section>
