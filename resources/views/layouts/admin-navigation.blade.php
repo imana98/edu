@@ -83,6 +83,9 @@
             <x-responsive-nav-link :href="route('admin.speakers.create')" :active="request()->routeIs('admin.speakers.create')">
                 登録
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.seminars.index')" :active="request()->routeIs('admin.seminars.index')">
+                研修管理
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
