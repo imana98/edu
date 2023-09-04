@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                   <section class="text-gray-600 body-font">
                     <h3 class="text-3xl w-64 mx-auto text-center" style="background:linear-gradient(transparent 60%, #F8E87E 60%);">開講予定／履歴</h3>
-                    <div class="container px-5 py-8 mx-auto">
+                    <div class="container px-5 py-8 mx-auto lg:flex">
                       @foreach ($records as $record)
                       <div class="py-2 px-4 lg:w-1/3">
                         <div class="h-full flex items-start border-2 p-4 relative">
