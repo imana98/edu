@@ -1,6 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
-        <div class="items-center text-center"><p>【講義者用】</p></div>
+        <div class="items-center text-center">
+            <p>【講義者用】</p>
+            <p>ログインボタンを押しても遷移しない場合は<br>再度講義者アイコンを押してください。</p>
+        </div>
         <x-slot name="logo">
             <div class="w-32">
             <a href="/">
