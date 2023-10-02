@@ -1,6 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
-        <div class="items-center text-center"><p>【管理者用】</p></div>
+        <div class="items-center text-center">
+            <p>【管理者用】</p>
+            <p>ログインボタンを押しても遷移しない場合は<br>再度管理者アイコンを押してください。</p>
+        </div>
         <x-slot name="logo">
             <div class="w-32">
                 <a href="/">
